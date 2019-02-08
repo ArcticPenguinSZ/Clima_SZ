@@ -19,12 +19,24 @@ protocol ChangeCityDelegate {
 
 class ChangeCityViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        editDropDownMenu()
+    }
+    
     //Declare the delegate variable here:
     var delegate : ChangeCityDelegate?
     
     //This is the pre-linked IBOutlets to the text field:
-    @IBOutlet weak var changeCityTextField: UITextField!
 
+    @IBOutlet weak var changeCityTextField: DropDown!
+    
+    func editDropDownMenu() {
+        let dropDownMenu = changeCityTextField
+        
+        dropDownMenu?.optionArray = ["Beijing", "New York"]
+        
+    }
     
     //This is the IBAction that gets called when the user taps on the "Get Weather" button:
     @IBAction func getWeatherPressed(_ sender: AnyObject) {
