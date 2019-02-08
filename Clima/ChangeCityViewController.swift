@@ -21,7 +21,7 @@ class ChangeCityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        editDropDownMenu()
+        updateDropDownMenu()
     }
     
     //Declare the delegate variable here:
@@ -31,12 +31,27 @@ class ChangeCityViewController: UIViewController {
 
     @IBOutlet weak var changeCityTextField: DropDown!
     
-    func editDropDownMenu() {
+    func updateDropDownMenu() {
         let dropDownMenu = changeCityTextField
-        
-        dropDownMenu?.optionArray = ["Beijing", "New York"]
-        
+        let path = Bundle.main.path(forResource: "current.city.list", ofType: "json")
+        let url = URL(fileURLWithPath: path!)
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            for city in json as! [Dictionary<String,AnyObject>] {
+                let name = city["name"]
+                print(name)
+                dropDownMenu?.optionArray.append(name as! String)
+                //dropDownMenu?.optionArray.sort()
+                //if name!.contains(changeCityTextField.text ?? "Something is wrong") {
+                //}
+            }
+        }
+        catch {
+            print(error)
+        }
     }
+    
     
     //This is the IBAction that gets called when the user taps on the "Get Weather" button:
     @IBAction func getWeatherPressed(_ sender: AnyObject) {

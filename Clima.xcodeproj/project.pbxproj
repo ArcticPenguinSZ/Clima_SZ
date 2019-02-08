@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		02BBDC45D368D40AF90EEC6F /* Pods_Clima.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E524E4F52FB908806C89C48 /* Pods_Clima.framework */; };
 		4C278C19220C95F300A50486 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C278C18220C95F300A50486 /* iOSDropDown.framework */; };
+		4C278C1F220D660A00A50486 /* city.list.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C278C1E220D660A00A50486 /* city.list.json */; };
+		4C278C61220E16E000A50486 /* current.city.list.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C278C60220E16E000A50486 /* current.city.list.json */; };
 		63E28AD11B99C32400FBF6E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E28AD01B99C32400FBF6E0 /* AppDelegate.swift */; };
 		63E28AF11B99C35700FBF6E0 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E28AF01B99C35700FBF6E0 /* WeatherDataModel.swift */; };
 		63E28AF61B99C36100FBF6E0 /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E28AF21B99C36100FBF6E0 /* ChangeCityViewController.swift */; };
@@ -24,6 +26,8 @@
 		0B4FA7C0317A73F5F4000A70 /* Pods-Clima.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clima.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Clima/Pods-Clima.debug.xcconfig"; sourceTree = "<group>"; };
 		0E524E4F52FB908806C89C48 /* Pods_Clima.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clima.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C278C18220C95F300A50486 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C278C1E220D660A00A50486 /* city.list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = city.list.json; path = ../../../Downloads/city.list.json; sourceTree = "<group>"; };
+		4C278C60220E16E000A50486 /* current.city.list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = current.city.list.json; path = ../../../Downloads/current.city.list.json; sourceTree = "<group>"; };
 		63E28ACB1B99C32400FBF6E0 /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E28ACF1B99C32400FBF6E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63E28AD01B99C32400FBF6E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 		63E28ACD1B99C32400FBF6E0 /* Clima */ = {
 			isa = PBXGroup;
 			children = (
+				4C278C60220E16E000A50486 /* current.city.list.json */,
+				4C278C1E220D660A00A50486 /* city.list.json */,
 				63E28AFD1B99C38100FBF6E0 /* View */,
 				63E28AFA1B99C36D00FBF6E0 /* Model */,
 				63E28AFB1B99C37500FBF6E0 /* Controller */,
@@ -196,6 +202,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63E28AF71B99C36100FBF6E0 /* Images.xcassets in Resources */,
+				4C278C1F220D660A00A50486 /* city.list.json in Resources */,
+				4C278C61220E16E000A50486 /* current.city.list.json in Resources */,
 				63E28AFF1B99C3B300FBF6E0 /* LaunchScreen.xib in Resources */,
 				AD05C7BE20EBD80E00915CD8 /* README.md in Resources */,
 				63E28AF81B99C36100FBF6E0 /* Main.storyboard in Resources */,
