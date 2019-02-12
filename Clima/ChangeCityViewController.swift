@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import iOSDropDown
-
+import DropDown
 
 //Write the protocol declaration here:
 protocol ChangeCityDelegate {
@@ -17,22 +16,23 @@ protocol ChangeCityDelegate {
 }
 
 
-class ChangeCityViewController: UIViewController {
+class ChangeCityViewController: UIViewController, UITextFieldDelegate {
+    
+    var nameCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateDropDownMenu()
+        setUpDropDown()
+        changeCityTextField.delegate = self
     }
     
-    //Declare the delegate variable here:
-    var delegate : ChangeCityDelegate?
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
     
-    //This is the pre-linked IBOutlets to the text field:
-
-    @IBOutlet weak var changeCityTextField: DropDown!
-    
-    func updateDropDownMenu() {
-        let dropDownMenu = changeCityTextField
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        cityNameMenu.dataSource = []
+        nameCount = 0
         let path = Bundle.main.path(forResource: "current.city.list", ofType: "json")
         let url = URL(fileURLWithPath: path!)
         do {
@@ -40,11 +40,56 @@ class ChangeCityViewController: UIViewController {
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             for city in json as! [Dictionary<String,AnyObject>] {
                 let name = city["name"]
-                print(name)
-                dropDownMenu?.optionArray.append(name as! String)
                 //dropDownMenu?.optionArray.sort()
-                //if name!.contains(changeCityTextField.text ?? "Something is wrong") {
-                //}
+                if (name?.hasPrefix(changeCityTextField.text ?? "A"))! && nameCount <= 6 {
+                    
+                    nameCount += 1
+                    cityNameMenu.dataSource.append(name as! String)
+                    
+                }
+            }
+        }
+        catch {
+            print(error)
+        }
+        cityNameMenu.show()
+    }
+
+    
+    @IBOutlet weak var changeCityTextField: UITextField!
+    
+    let cityNameMenu = DropDown()
+    
+    //Declare the delegate variable here:
+    var delegate : ChangeCityDelegate?
+    
+    //This is the pre-linked IBOutlets to the text field:
+    
+    func setUpDropDown() {
+        cityNameMenu.anchorView = changeCityTextField
+        cityNameMenu.bottomOffset = CGPoint(x: 0, y: changeCityTextField.bounds.height)
+        cityNameMenu.selectionAction = {[weak self] (index, item) in
+            self?.changeCityTextField.text = "\(item)"
+        }
+    }
+    
+    func updateDropDownMenu() {
+
+        let path = Bundle.main.path(forResource: "current.city.list", ofType: "json")
+        let url = URL(fileURLWithPath: path!)
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            
+    
+            for city in json as! [Dictionary<String,AnyObject>] {
+                let name = city["name"]
+                
+                
+                //dropDownMenu?.optionArray.sort()
+                if name!.contains(changeCityTextField.text ?? "Something is wrong") {
+                    
+                }
             }
         }
         catch {

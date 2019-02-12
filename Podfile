@@ -11,6 +11,7 @@ target 'Clima' do
     pod 'Alamofire'
     pod 'SVProgressHUD'
     pod 'iOSDropDown'
+    pod 'DropDown'
 
 
 end
